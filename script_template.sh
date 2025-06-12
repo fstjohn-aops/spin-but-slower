@@ -7,7 +7,12 @@ echo "Received text from frontend: '{received_text}'"
 echo "Current timestamp: $(date)"
 echo ""
 
-sleep 10
+# run create new instance with no input
+# CI=true time create-new-test-instance.sh '{received_text}'
+
+env | sort
+
+echo "Hello wrold!!!!!"
 
 echo ""
 echo "=== Script completed ==="

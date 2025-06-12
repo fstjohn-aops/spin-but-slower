@@ -5,13 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load previous instances on page load
     loadInstances();
 
-    // Add event listener for clear cache button
-    document.getElementById('clearCacheBtn').addEventListener('click', function() {
-        if (confirm('Are you sure you want to clear the instances cache? This will remove all previously created instance records.')) {
-            clearCache();
-        }
-    });
-
     document.getElementById('textForm').addEventListener('submit', function(e) {
         e.preventDefault();
         const inputValue = document.getElementById('textInput').value.trim();
@@ -61,34 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 resetUI();
             });
     });
-
-    function clearCache() {
-        const clearButton = document.getElementById('clearCacheBtn');
-        clearButton.disabled = true;
-        clearButton.textContent = 'Clearing...';
-        
-        fetch('/api/clear-cache', {
-            method: 'POST'
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    console.log('Cache cleared successfully');
-                    showResult('success', 'Instances cache cleared successfully');
-                    loadInstances(); // Refresh the instances display
-                } else {
-                    showResult('failure', data.message || 'Failed to clear cache');
-                }
-            })
-            .catch(error => {
-                console.error('Error clearing cache:', error);
-                showResult('failure', 'Error clearing cache. Please try again.');
-            })
-            .finally(() => {
-                clearButton.disabled = false;
-                clearButton.textContent = 'Clear Cache';
-            });
-    }
 
     function startProvisioning(inputValue, submitButton, spinner) {
         // Show loading state and spinner
@@ -159,14 +124,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="instance-left">
                         <div class="instance-prefix">${instance.hostname_prefix}</div>
                         <div class="instance-hostname">${hostname}</div>
+                        <div class="instance-log">
+                            <a href="${instance.log_file}" target="_blank">View Log</a>
+                        </div>
                     </div>
                     <div class="instance-right">
                         <div class="instance-date">${formattedDate}</div>
                         <div class="ping-status checking" id="ping-${instance.id}">
                             Checking...
                         </div>
-                    </div>
-                `;
+                    </div>`;
                 
                 instancesList.appendChild(instanceItem);
                 
@@ -222,26 +189,18 @@ document.addEventListener('DOMContentLoaded', function() {
                             const elapsed = Math.floor((new Date() - startTime) / 1000);
                             submitButton.value = `Running... (${elapsed}s)`;
                         }
-                    } else if (data.status === 'completed') {
-                        console.log('Job completed successfully!');
-                        console.log('Script output:', data.output);
-                        if (data.errors) {
-                            console.log('Script errors:', data.errors);
-                        }
+                    } else if (data.status === 'completed' || data.status === 'failed') {
                         stopPolling();
                         resetUI();
-                        showResult('success', `EC2 instance provisioned successfully with prefix: ${hostnamePrefix}`);
                         
-                        // Reload instances to show the new one
-                        loadInstances();
-                    } else if (data.status === 'failed') {
-                        console.log('Job failed!');
-                        if (data.output) console.log('Script output:', data.output);
-                        if (data.errors) console.log('Script errors:', data.errors);
-                        if (data.error) console.log('Error:', data.error);
-                        stopPolling();
-                        resetUI();
-                        showResult('failure', 'EC2 provisioning failed. Check console for details.');
+                        if (data.status === 'completed') {
+                            const message = `Instance created successfully! &nbsp;<br><a href="${data.log_file}" target="_blank">View Log</a>`;
+                            showResult('success', message);
+                            loadInstances(); // Refresh the instances list
+                        } else {
+                            const message = `Failed to create instance. &nbsp;<br><a href="${data.log_file}" target="_blank">View Error Log</a>`;
+                            showResult('failure', message);
+                        }
                     }
                 })
                 .catch(error => {

@@ -1,0 +1,81 @@
+Job ID: 70018efb-6be9-4f8a-ae0f-34c588fa3134
+Hostname Prefix: meow2
+Start Time: 2025-06-12T11:28:03.273644
+--------------------------------------------------------------------------------
+
+STDOUT:
+=== Script started ===
+Received text from frontend: 'meow2'
+Current timestamp: Thu Jun 12 11:28:03 PDT 2025
+
+__CF_USER_TEXT_ENCODING=0x1F6:0x0:0x0
+__CFBundleIdentifier=com.todesktop.230313mzl4w4u92
+_=/usr/bin/env
+BUNDLED_DEBUGPY_PATH=/Users/finnstjohn/.cursor/extensions/ms-python.debugpy-2025.8.0-darwin-arm64/bundled/libs/debugpy
+COLORTERM=truecolor
+COMMAND_MODE=unix2003
+CURSOR_TRACE_ID=3214ee1ad39b472ca91687a845f7f927
+FNM_ARCH=arm64
+FNM_COREPACK_ENABLED=false
+FNM_DIR=/Users/finnstjohn/.local/share/fnm
+FNM_LOGLEVEL=info
+FNM_MULTISHELL_PATH=/Users/finnstjohn/.local/state/fnm_multishells/11062_1749748447135
+FNM_NODE_DIST_MIRROR=https://nodejs.org/dist
+FNM_RESOLVE_ENGINES=true
+FNM_VERSION_FILE_STRATEGY=local
+GIT_ASKPASS=/Applications/Cursor.app/Contents/Resources/app/extensions/git/dist/askpass.sh
+HOME=/Users/finnstjohn
+HOMEBREW_CELLAR=/opt/homebrew/Cellar
+HOMEBREW_PREFIX=/opt/homebrew
+HOMEBREW_REPOSITORY=/opt/homebrew
+INFOPATH=/opt/homebrew/share/info:/opt/homebrew/share/info:
+LANG=en_US.UTF-8
+LESS=-R
+LOGNAME=finnstjohn
+LS_COLORS=di=1;36:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43
+LSCOLORS=Gxfxcxdxbxegedabagacad
+MallocNanoZone=0
+NVM_BIN=/Users/finnstjohn/.nvm/versions/node/v22.15.1/bin
+NVM_CD_FLAGS=-q
+NVM_DIR=/Users/finnstjohn/.nvm
+NVM_INC=/Users/finnstjohn/.nvm/versions/node/v22.15.1/include/node
+OLDPWD=/Users/finnstjohn/Source/spin-but-slower
+ORIGINAL_XDG_CURRENT_DESKTOP=undefined
+PAGER=less
+PATH=/Users/finnstjohn/Source/spin-but-slower/venv/bin:/Users/finnstjohn/.local/bin:/Users/finnstjohn/.local/state/fnm_multishells/11062_1749748447135/bin:/Users/finnstjohn/.nvm/versions/node/v22.15.1/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/finnstjohn/.local/bin:/Users/finnstjohn/.local/state/fnm_multishells/79868_1749139351128/bin:/Users/finnstjohn/.nvm/versions/node/v22.15.1/bin:/Users/finnstjohn/.cursor/extensions/ms-python.debugpy-2025.8.0-darwin-arm64/bundled/scripts/noConfigScripts
+PWD=/Users/finnstjohn/Source/spin-but-slower
+PYDEVD_DISABLE_FILE_VALIDATION=1
+SHELL=/bin/zsh
+SHLVL=2
+SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.6aDixdEZkU/Listeners
+TERM_PROGRAM_VERSION=1.0.0
+TERM_PROGRAM=vscode
+TERM=xterm-256color
+TMPDIR=/var/folders/vj/_jq5_35j66s9m8mvvlj37q840000gp/T/
+TROVE_BIN_DIR=/opt/trove/repo/bin
+TROVE_DIR=/opt/trove/repo
+TROVE_INSTALL_BIN_DIR=/opt/trove/bin
+TROVE_INSTALL_DIR=/opt/trove
+TROVE_INSTALL_SYMLINK_TO_DIR=/usr/local/bin
+TROVE_SBIN_DIR=/opt/trove/repo/sbin
+USER_ZDOTDIR=/Users/finnstjohn
+USER=finnstjohn
+VIRTUAL_ENV_PROMPT=venv
+VIRTUAL_ENV=/Users/finnstjohn/Source/spin-but-slower/venv
+VSCODE_DEBUGPY_ADAPTER_ENDPOINTS=/Users/finnstjohn/.cursor/extensions/ms-python.debugpy-2025.8.0-darwin-arm64/.noConfigDebugAdapterEndpoints/endpoint-706badd9972258a0.txt
+VSCODE_GIT_ASKPASS_EXTRA_ARGS=
+VSCODE_GIT_ASKPASS_MAIN=/Applications/Cursor.app/Contents/Resources/app/extensions/git/dist/askpass-main.js
+VSCODE_GIT_ASKPASS_NODE=/Applications/Cursor.app/Contents/Frameworks/Cursor Helper (Plugin).app/Contents/MacOS/Cursor Helper (Plugin)
+VSCODE_GIT_IPC_HANDLE=/var/folders/vj/_jq5_35j66s9m8mvvlj37q840000gp/T/vscode-git-d9658bdbe4.sock
+VSCODE_INJECTION=1
+WERKZEUG_RUN_MAIN=true
+WERKZEUG_SERVER_FD=9
+XPC_FLAGS=0x0
+XPC_SERVICE_NAME=0
+ZDOTDIR=/Users/finnstjohn
+ZSH=/Users/finnstjohn/.oh-my-zsh
+Hello wrold!!!!!
+
+=== Script completed ===
+
+Exit Code: 0

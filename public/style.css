@@ -26,6 +26,7 @@ h2 {
 }
 
 .instances-container {
+    margin-top: 20px;
     display: none;
     background: white;
     padding: 20px;
@@ -38,32 +39,14 @@ h2 {
 
 .instances-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
 }
 
-.clear-cache-btn {
-    padding: 6px 12px;
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    border-radius: 2px;
-    cursor: pointer;
-    font-size: 12px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: background-color 0.2s;
-}
-
-.clear-cache-btn:hover:not(:disabled) {
-    background-color: #c0392b;
-}
-
-.clear-cache-btn:disabled {
-    background-color: #bdc3c7;
-    cursor: not-allowed;
+.instances-header h2 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333;
 }
 
 .instances-list {
@@ -94,9 +77,9 @@ h2 {
 }
 
 .instance-hostname {
-    font-size: 12px;
     color: #666;
-    font-family: monospace;
+    font-size: 0.9em;
+    margin-top: 2px;
 }
 
 .instance-right {
@@ -230,12 +213,12 @@ input[type="submit"]:disabled {
 }
 
 .result-container {
+    margin: 10px 0;
     display: none;
     background: white;
     padding: 15px 20px;
     border-radius: 4px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    margin-top: 10px;
 }
 
 .result-success {
@@ -278,4 +261,18 @@ input[type="submit"]:disabled {
     line-height: 20px;
     margin-right: 10px;
     font-size: 14px;
+}
+
+.instance-log {
+    margin-top: 4px;
+    font-size: 0.85em;
+}
+
+.instance-log a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.instance-log a:hover {
+    text-decoration: underline;
 } 

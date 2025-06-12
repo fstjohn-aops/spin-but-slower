@@ -26,7 +26,7 @@ def load_instances():
         pass
     return []
 
-def save_instance(hostname_prefix, job_id, completed_at):
+def save_instance(hostname_prefix, job_id, completed_at, log_file):
     """Save a successful instance to JSON file"""
     try:
         instances = load_instances()
@@ -34,6 +34,7 @@ def save_instance(hostname_prefix, job_id, completed_at):
             'hostname_prefix': hostname_prefix,
             'job_id': job_id,
             'completed_at': completed_at,
+            'log_file': log_file,
             'id': len(instances) + 1
         }
         instances.append(new_instance)
@@ -87,6 +88,10 @@ def run_script_background(job_id, received_text):
         jobs[job_id]['status'] = 'running'
         jobs[job_id]['started_at'] = datetime.now().isoformat()
         
+        # Create log filename with timestamp
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        log_filename = f"logs/script_{timestamp}_{job_id}.log"
+        
         # Read the bash script template
         with open('script_template.sh', 'r') as f:
             script_template = f.read()
@@ -104,8 +109,29 @@ def run_script_background(job_id, received_text):
         # Make the script executable
         os.chmod(temp_script_path, 0o755)
         
-        # Execute the templated bash script
-        result = subprocess.run(['bash', temp_script_path], capture_output=True, text=True)
+        # Execute the templated bash script and capture output to log file
+        with open(log_filename, 'w') as log_file:
+            # Write initial log info
+            log_file.write(f"Job ID: {job_id}\n")
+            log_file.write(f"Hostname Prefix: {received_text}\n")
+            log_file.write(f"Start Time: {datetime.now().isoformat()}\n")
+            log_file.write("-" * 80 + "\n\n")
+            
+            # Execute script and capture output
+            result = subprocess.run(
+                ['bash', temp_script_path],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True
+            )
+            
+            # Write script output to log file
+            log_file.write("STDOUT:\n")
+            log_file.write(result.stdout)
+            if result.stderr:
+                log_file.write("\nSTDERR:\n")
+                log_file.write(result.stderr)
+            log_file.write(f"\nExit Code: {result.returncode}\n")
         
         # Clean up the temporary file
         os.unlink(temp_script_path)
@@ -114,18 +140,15 @@ def run_script_background(job_id, received_text):
         completed_at = datetime.now().isoformat()
         jobs[job_id]['status'] = 'completed' if result.returncode == 0 else 'failed'
         jobs[job_id]['completed_at'] = completed_at
-        jobs[job_id]['output'] = result.stdout
-        jobs[job_id]['errors'] = result.stderr
+        jobs[job_id]['log_file'] = log_filename
         jobs[job_id]['return_code'] = result.returncode
         
         # Save successful instances
         if result.returncode == 0:
-            save_instance(received_text, job_id, completed_at)
+            save_instance(received_text, job_id, completed_at, log_filename)
         
         print(f"Job {job_id} completed with return code: {result.returncode}")
-        print("Script output:", result.stdout)
-        if result.stderr:
-            print("Script errors:", result.stderr)
+        print(f"Log file written to: {log_filename}")
             
     except Exception as e:
         jobs[job_id]['status'] = 'failed'
@@ -242,5 +265,10 @@ def get_instances():
 def get_all_jobs():
     return jsonify(list(jobs.values()))
 
+# Serve log files
+@app.route('/logs/<path:filename>')
+def serve_log(filename):
+    return send_from_directory('logs', filename)
+
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(debug=True, host='0.0.0.0', port=8000)
