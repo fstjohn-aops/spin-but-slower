@@ -9,13 +9,27 @@
 <body>
     <h1>Spin but slower and worse and not dynamic</h1>
     
+    <div class="instances-container" id="instancesContainer">
+        <div class="instances-header">
+            <h2>Previously Created Instances</h2>
+            <button class="clear-cache-btn" id="clearCacheBtn">Clear Cache</button>
+        </div>
+        <div class="instances-list" id="instancesList">
+            <!-- Previous instances will be loaded here -->
+        </div>
+    </div>
+    
     <div class="form-container">
         <form id="textForm">
-            <label for="textInput">Enter text:</label>
+            <label for="textInput">Hostname prefix (usually your initials):</label>
             <input type="text" id="textInput" name="textInput">
             <input type="submit" value="Submit">
         </form>
         <div class="spinner" id="loadingSpinner"></div>
+    </div>
+
+    <div class="result-container" id="resultContainer">
+        <!-- Success/failure messages will appear here -->
     </div>
 
     <script src="script.js"></script>
