@@ -1,32 +1,8 @@
 [
   {
-    "hostname_prefix": "whatt",
-    "job_id": "5ea093dd-c650-4185-9c04-a0c78bb34f7e",
-    "completed_at": "2025-06-12T10:40:31.795038",
+    "hostname_prefix": "wub",
+    "job_id": "df19b256-efa6-4112-aa5a-cf1a949f2aeb",
+    "completed_at": "2025-06-12T10:56:42.994853",
     "id": 1
-  },
-  {
-    "hostname_prefix": "adxx",
-    "job_id": "86d56416-dbdc-421c-85b5-4e52852139f3",
-    "completed_at": "2025-06-12T10:41:50.866860",
-    "id": 2
-  },
-  {
-    "hostname_prefix": "whatt",
-    "job_id": "007fe9e0-16c1-48bb-a2fe-311a48d07950",
-    "completed_at": "2025-06-12T10:48:12.146982",
-    "id": 3
-  },
-  {
-    "hostname_prefix": "whatt",
-    "job_id": "e0f7ffe2-2618-432c-8a32-9a83abb343f8",
-    "completed_at": "2025-06-12T10:48:27.406733",
-    "id": 4
-  },
-  {
-    "hostname_prefix": "adxx",
-    "job_id": "5c28fc8f-41c0-4afc-83dd-9abf64e48a46",
-    "completed_at": "2025-06-12T10:50:28.296997",
-    "id": 5
   }
 ]
