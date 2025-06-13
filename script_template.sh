@@ -8,7 +8,7 @@ echo "Current timestamp: $(date)"
 echo ""
 
 # run create new instance with no input
-# CI=true time create-new-test-instance.sh '{received_text}'
+echo CI=true time create-new-test-instance.sh '{received_text}'
 
 env | sort
 
